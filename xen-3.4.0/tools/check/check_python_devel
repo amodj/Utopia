@@ -1,0 +1,12 @@
+#!/bin/sh
+# CHECK-BUILD
+
+. ./funcs.sh
+
+python -c '
+import os.path, sys
+for p in sys.path:
+	if os.path.exists(p + "/config/Makefile"):
+		sys.exit(0)
+sys.exit(1)
+' || fail "can't find python devel files"
